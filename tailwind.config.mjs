@@ -10,6 +10,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'bnr-rose': '#fea0a1',
+        'bnr-orange': '#f68f02',
+        'bnr-jaune': '#fdb515',
+        'bnr-bleu': '#76ccee',
       },
     },
   },

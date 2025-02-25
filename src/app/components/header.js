@@ -1,0 +1,115 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react"; // Icons for the hamburger menu
+
+export default function Header() {
+  const [logo, setLogo] = useState("/logos/logo_long.png");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  let timeoutId;
+
+  // Handles opening and closing the dropdown on hover (desktop)
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutId);
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutId = setTimeout(() => setIsDropdownOpen(false), 200);
+  };
+
+  return (
+    <header className="text-white shadow-lg bg-[#171717]">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        {/* Logo */}
+        <Link href="/">
+          <img src={logo} alt="Logo" className="h-14" />
+        </Link>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white focus:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+        </button>
+
+        {/* Desktop Navigation */}
+        <nav className={`md:flex space-x-6 bnr-font hidden`}>
+          <ul className="flex space-x-6">
+            {/* Events Section */}
+            <li
+              className="relative cursor-pointer"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span>L'evenement</span>
+              {isDropdownOpen && (
+                <ul
+                  className="absolute left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-md overflow-hidden"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <li className="hover:bg-gray-100 text-bnr-rose px-4 py-2">
+                    <Link href="/evenement/parcours">Le parcours</Link>
+                  </li>
+                  <li className="hover:bg-gray-100 px-4 py-2 text-bnr-bleu">
+                    <Link href="/evenement/activites">Les activites</Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li className="hover:text-bnr-jaune">
+              <Link href="/guide">Guide du participant</Link>
+            </li>
+            <li className="hover:text-bnr-rose">
+              <Link href="/partenaires">Partenaires</Link>
+            </li>
+            <li className="hover:text-bnr-bleu">
+              <Link href="/inscription">Inscription</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-[#21212182] text-white bnr-font mx-12">
+          <ul className="flex flex-col space-y-4 p-4">
+            {/* Mobile Dropdown for "L'evenement" */}
+            <li className="cursor-pointer">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex justify-between w-full text-left"
+              >
+                L'evenement
+                <span>{isDropdownOpen ? "▲" : "▼"}</span>
+              </button>
+              {isDropdownOpen && (
+                <ul className="mt-2 bg-gray-900 rounded-lg">
+                  <li className="hover:bg-gray-700 px-4 py-2 text-bnr-rose">
+                    <Link href="/evenement/parcours">Le parcours</Link>
+                  </li>
+                  <li className="hover:bg-gray-700 px-4 py-2 text-bnr-bleu">
+                    <Link href="/evenement/activites">Les activites</Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li className="hover:text-bnr-jaune">
+              <Link href="/guide">Guide du participant</Link>
+            </li>
+            <li className="hover:text-bnr-rose">
+              <Link href="/partenaires">Partenaires</Link>
+            </li>
+            <li className="hover:text-bnr-bleu">
+              <Link href="/inscription">Inscription</Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </header>
+  );
+}

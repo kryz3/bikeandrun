@@ -16,6 +16,17 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  font-family: Lato, sans-serif;
+}
+
+@font-face {
+  font-family: "NiseSegaSonic";
+  src: url("/NiseSegaSonic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bnr-font {
+  font-family: "NiseSegaSonic", sans-serif;
 }
