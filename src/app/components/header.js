@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react"; // Icons for the hamburger menu
 
@@ -7,6 +7,7 @@ export default function Header() {
   const [logo, setLogo] = useState("/logos/logo_long.png");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null); // Reference for the menu
 
   let timeoutId;
 
@@ -19,6 +20,19 @@ export default function Header() {
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => setIsDropdownOpen(false), 200);
   };
+
+  // Close menu when clicking outside of it
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="text-white shadow-lg bg-[#171717]">
@@ -76,7 +90,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#21212182] text-white bnr-font mx-12">
+        <div ref={menuRef} className="md:hidden bg-[#21212182] text-white bnr-font mx-12">
           <ul className="flex flex-col space-y-4 p-4">
             {/* Mobile Dropdown for "L'evenement" */}
             <li className="cursor-pointer">
@@ -90,22 +104,32 @@ export default function Header() {
               {isDropdownOpen && (
                 <ul className="mt-2 bg-gray-900 rounded-lg">
                   <li className="hover:bg-gray-700 px-4 py-2 text-bnr-rose">
-                    <Link href="/evenement/parcours">Le parcours</Link>
+                    <Link href="/evenement/parcours" onClick={() => setIsMenuOpen(false)}>
+                      Le parcours
+                    </Link>
                   </li>
                   <li className="hover:bg-gray-700 px-4 py-2 text-bnr-bleu">
-                    <Link href="/evenement/activites">Les activites</Link>
+                    <Link href="/evenement/activites" onClick={() => setIsMenuOpen(false)}>
+                      Les activites
+                    </Link>
                   </li>
                 </ul>
               )}
             </li>
             <li className="hover:text-bnr-jaune">
-              <Link href="/guide">Guide du participant</Link>
+              <Link href="/guide" onClick={() => setIsMenuOpen(false)}>
+                Guide du participant
+              </Link>
             </li>
             <li className="hover:text-bnr-rose">
-              <Link href="/partenaires">Partenaires</Link>
+              <Link href="/partenaires" onClick={() => setIsMenuOpen(false)}>
+                Partenaires
+              </Link>
             </li>
             <li className="hover:text-bnr-bleu">
-              <Link href="/inscription">Inscription</Link>
+              <Link href="/inscription" onClick={() => setIsMenuOpen(false)}>
+                Inscription
+              </Link>
             </li>
           </ul>
         </div>
