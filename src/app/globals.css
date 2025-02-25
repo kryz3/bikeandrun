@@ -15,8 +15,12 @@
 }
 
 body {
+  margin: 0;
+  height: 100vh;
   color: var(--foreground);
-  background: white;
+  background: linear-gradient(135deg, #ff9aff, #ffd280, #a5c7ff);
+  background-size: cover;
+
   font-family: Lato, sans-serif;
 }
 
