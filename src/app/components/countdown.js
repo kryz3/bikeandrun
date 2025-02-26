@@ -18,7 +18,6 @@ export default function CountdownTimer({ targetDate }) {
       return { jours: 0, heures: 0, minutes: 0, secondes: 0 };
     };
 
-    // Initialize state after component mounts (avoiding hydration mismatch)
     setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {
@@ -29,7 +28,7 @@ export default function CountdownTimer({ targetDate }) {
   }, [targetDate]);
 
   if (!timeLeft) {
-    return null; // Avoid hydration errors by not rendering until mounted
+    return null;
   }
 
   return (
