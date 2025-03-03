@@ -1,7 +1,12 @@
-"use client";
+
+export const metadata = {
+  title: "Inscription - Bike&Run",
+};
 
 export default function Inscription() {
+
   return (
+
     <>
       <iframe
         id="haWidget"

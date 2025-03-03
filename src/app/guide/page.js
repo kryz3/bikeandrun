@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Activités - Bike&Run",
+    title: "Guide - Bike&Run",
   };
 
-export default function Activites() {
+export default function Guide() {
     return(
         <>
         </>
