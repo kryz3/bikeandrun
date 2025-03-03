@@ -1,3 +1,4 @@
+
 import CountdownTimer from "./components/countdown";
 import AnimatedText from "./components/animatedText"; // Import new component
 import Image from "next/image";

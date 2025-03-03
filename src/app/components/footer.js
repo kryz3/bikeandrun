@@ -19,7 +19,7 @@ export default function Footer() {
           </nav>
           
           {/* Copyright */}
-          <p className="text-xs mt-4 md:mt-0">&copy; {new Date().getFullYear()} Bike&Run. Tous droits réservés.</p>
+          <p className="text-xs mt-4 md:mt-0">&copy; {new Date().getFullYear()} Bike&Run. Tous droits réservés. Développé par <strong>Paul-Jean GIRAULT</strong> </p>
         </div>
       </footer>
     );

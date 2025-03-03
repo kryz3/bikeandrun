@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function CountdownTimer({ targetDate }) {
   const [timeLeft, setTimeLeft] = useState(null);
+  const [text, setText] = useState("S'INSCRIRE !");
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -27,22 +29,53 @@ export default function CountdownTimer({ targetDate }) {
     return () => clearInterval(timer);
   }, [targetDate]);
 
+  useEffect(() => {
+    if (text === "VIENS LÀ VIENS LÀ" && audioRef.current) {
+      audioRef.current.play().catch((error) => console.log("Audio playback failed", error));
+    }
+  }, [text]);
+
   if (!timeLeft) {
     return null;
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-[#171717] text-white py-6 px-4 rounded-lg shadow-lg w-full  mx-auto bg-opacity-80">
-      <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4">
-        TEMPS RESTANT AVEC LE BIKE&RUN
-      </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-        {Object.entries(timeLeft).map(([unit, value]) => (
-          <div key={unit} className="flex flex-col items-center hover:bg-bnr-rose bg-bnr-bleu px-4 py-3 sm:px-6 sm:py-4 rounded-lg">
-            <span className="text-3xl sm:text-4xl md:text-5xl font-bold">{value}</span>
-            <span className="text-xs sm:text-sm uppercase">{unit}</span>
-          </div>
-        ))}
+    <div className="relative flex justify-center items-center w-full h-full">
+      <audio ref={audioRef} src="/files/COMPOSANTULTRAIMPORTANT.mp3" preload="auto" />
+      {text === "VIENS LÀ VIENS LÀ" && (
+        <img
+          className="absolute top-0 rounded-lg left-0 w-full h-full object-cover z-10"
+          src="/files/jelesavaistupasouijelesavaistu.JPG"
+          alt="Background Image"
+        />
+      )}
+
+      {/* Countdown Timer */}
+      <div className="relative flex flex-col z-20 items-center justify-center bg-[#171717] text-white py-6 px-4 rounded-lg shadow-lg w-full mx-auto bg-opacity-80">
+        <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4">
+          TEMPS RESTANT AVANT LE BIKE&RUN
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          {Object.entries(timeLeft).map(([unit, value]) => (
+            <div
+              key={unit}
+              className="flex flex-col items-center hover:bg-bnr-rose bg-bnr-bleu px-4 py-3 sm:px-6 sm:py-4 rounded-lg"
+            >
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                {value}
+              </span>
+              <span className="text-xs sm:text-sm uppercase">{unit}</span>
+            </div>
+          ))}
+        </div>
+        <a
+          href="/inscription"
+          onMouseEnter={() => setText("VIENS LÀ VIENS LÀ")}
+          onMouseLeave={() => setText("S'INSCRIRE !")}
+          className="text-bnr-rose font-semibold text-center mt-4 animate-infinite-zoom hover:text-pink-500 transition-colors"
+        >
+          {text}
+        </a>
       </div>
     </div>
   );

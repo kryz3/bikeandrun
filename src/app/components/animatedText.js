@@ -4,7 +4,7 @@ const AnimatedText = ({ text }) => {
   const words = text.split(" "); // Split text into words
 
   return (
-    <p className="text-lg md:text-xl font-medium leading-relaxed">
+    <p className="text-lg md:text-xl font-semibold leading-relaxed">
       {words.map((word, index) => (
         <span
           key={index}

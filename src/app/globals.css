@@ -34,3 +34,13 @@ body {
 .bnr-font {
   font-family: "NiseSegaSonic", sans-serif;
 }
+
+@keyframes infiniteZoom {
+  0% { font-size: 1rem; }   /* text-xl */
+  50% { font-size: 1.5rem; } /* text-4xl */
+  100% { font-size: 1rem; }  /* text-xl */
+}
+
+.animate-infinite-zoom {
+  animation: infiniteZoom 1.5s infinite alternate ease-in-out;
+}
