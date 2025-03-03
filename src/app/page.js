@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <div>
-      <section className="h-[90vh] flex place-items-center">
+      <section className="h-[95vh] flex place-items-center">
         <div className="m-10 w-full">
           <CountdownTimer targetDate="2025-04-10T14:29:59" />
         </div>

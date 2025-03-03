@@ -29,7 +29,11 @@ export default function CountdownTimer({ targetDate }) {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-
+  useEffect(() => {
+    if (text === "VIENS LÀ VIENS LÀ" && audioRef.current) {
+      audioRef.current.play().catch((error) => console.log("Audio playback failed", error));
+    }
+  }, [text]);
 
   if (!timeLeft) {
     return null;
@@ -37,7 +41,14 @@ export default function CountdownTimer({ targetDate }) {
 
   return (
     <div className="relative flex justify-center items-center w-full h-full">
-    
+      <audio ref={audioRef} src="/files/COMPOSANTULTRAIMPORTANT.mp3" preload="auto" />
+      {text === "VIENS LÀ VIENS LÀ" && (
+        <img
+          className="absolute top-0 rounded-lg left-0 w-full h-full object-cover z-10"
+          src="/files/jelesavaistupasouijelesavaistu.JPG"
+          alt="Background Image"
+        />
+      )}
 
       {/* Countdown Timer */}
       <div className="relative flex flex-col z-20 items-center justify-center bg-[#171717] text-white py-6 px-4 rounded-lg shadow-lg w-full mx-auto bg-opacity-80">
@@ -59,7 +70,7 @@ export default function CountdownTimer({ targetDate }) {
         </div>
         <a
           href="/inscription"
-          onMouseEnter={() => setText("C'EST PARTI !")}
+          onMouseEnter={() => setText("VIENS LÀ VIENS LÀ")}
           onMouseLeave={() => setText("S'INSCRIRE !")}
           className="text-bnr-rose font-semibold text-center mt-4 animate-infinite-zoom hover:text-pink-500 transition-colors"
         >

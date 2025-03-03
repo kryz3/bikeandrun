@@ -33,8 +33,7 @@ const EmblaCarousel = (props) => {
             <div className="embla__slide" key={index}>
               <img
                 className="embla__slide__img"
-                src={`https://picsum.photos/600/350?v=${index}`}
-                alt="Your alt text"
+                src={`/logos/partenaires/${index}.png`}
               />
             </div>
           ))}

@@ -7,10 +7,10 @@ export const metadata = {
 
 export default function Partenaires() {
     const OPTIONS = {}
-const SLIDE_COUNT = 5
+const SLIDE_COUNT = 3
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
     return (
-        <div className="h-[80vh] place-items-center items-center flex justify-center">
+        <div className="h-[95vh] place-items-center items-center flex justify-center">
             <div  className="sd:w-full w-4/5"><EmblaCarousel slides={SLIDES} options={OPTIONS}/></div>
            
         

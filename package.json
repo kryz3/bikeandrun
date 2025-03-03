@@ -9,21 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/carousel": "^7.17.1",
-    "@mantine/core": "^7.17.1",
-    "@mantine/hooks": "^7.17.1",
+    "@wojtekmaj/react-hooks": "^1.22.0",
     "embla-carousel": "^8.5.2",
     "embla-carousel-class-names": "^8.5.2",
-    "jszip": "^3.10.1",
-    "leaflet": "^1.9.4",
+    "embla-carousel-react": "^8.5.2",
     "lucide-react": "^0.476.0",
     "next": "15.1.7",
+    "nodemailer": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-leaflet": "^5.0.0",
-    "react-slick": "^0.30.3",
-    "slick-carousel": "^1.8.1",
-    "tokml": "^0.4.0"
+    "react-pdf": "^9.2.1"
   },
   "devDependencies": {
     "@types/node": "22.13.8",

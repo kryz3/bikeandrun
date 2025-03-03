@@ -11,7 +11,6 @@ export default function Footer() {
           
           {/* Navigation Links */}
           <nav className="flex space-x-6 text-sm">
-            <a href="/contact" className="hover:text-white">Nous contacter</a>
             <a href="https://forumdestelecommunications.fr" className="hover:text-white">Forum des Télécommunications</a>
             <a href="https://www.instagram.com/bikeandrun_ipp/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
               <Instagram size={24} />
