@@ -89,7 +89,7 @@ export default function PDFViewer() {
             Précédente
           </button>
           <select
-            className="px-4 py-2 border border-gray-400 rounded"
+            className="px-4 py-2 border text-black border-gray-400 rounded"
             value={pageNumber}
             onChange={handlePageChange}
           >

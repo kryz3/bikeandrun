@@ -38,7 +38,7 @@ export default function CountdownTimer({ targetDate }) {
   return (
     <div className="relative flex justify-center items-center w-full h-full flex-col">
     
-    <a href="/guide"><h2 className="text-xl sm:text-2xl mb-4 text-center bnr-font text-white">
+    <a href="/guide"><h2 className="text-xl sm:text-2xl mb-4 text-center bnr-font text-white text-stroke drop-shadow-[2px_2px_0px_black]">
           VOIR LE GUIDE DU PARTICIPANT
         </h2></a>
       {/* Countdown Timer */}
