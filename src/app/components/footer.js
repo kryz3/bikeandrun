@@ -11,8 +11,11 @@ export default function Footer() {
           
           {/* Navigation Links */}
           <nav className="flex space-x-6 text-sm">
-            <a href="https://forumdestelecommunications.fr" className="hover:text-white">Forum des Télécommunications</a>
+            <a href="/reglement" target="_blank" className="hover:text-white">Règlement</a>
+            <a href="https://forumdestelecommunications.fr" target="_blank" className="hover:text-white">Forum des Télécommunications</a>
+            <a href="https://bde-imtbs-tsp.fr/fr/xtreme/" target="_blank" className="hover:text-white">Xtreme</a>
             <a href="https://www.instagram.com/bikeandrun_ipp/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+
               <Instagram size={24} />
             </a>
           </nav>

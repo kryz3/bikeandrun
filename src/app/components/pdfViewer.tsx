@@ -51,9 +51,13 @@ export default function PDFViewer() {
     setPageNumber((prevPage) => (prevPage < numPages ? prevPage + 1 : prevPage));
   };
 
+  const handlePageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setIsLoading(true);
+    setPageNumber(Number(event.target.value));
+  };
+
   return (
     <div className="flex flex-col items-center gap-4 p-4">
-
       <div className="shadow-lg p-4 w-full max-w-2xl z-10 bg-white rounded-lg" ref={setContainerRef}>
         <div className="relative" style={{ minHeight: "600px" }}>
           {isLoading && (
@@ -80,14 +84,25 @@ export default function PDFViewer() {
           <button
             onClick={goToPreviousPage}
             disabled={pageNumber <= 1}
-            className="px-4 py-2 bg-gray-800 rounded disabled:opacity-50"
+            className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-50"
           >
             Précédente
           </button>
+          <select
+            className="px-4 py-2 border border-gray-400 rounded"
+            value={pageNumber}
+            onChange={handlePageChange}
+          >
+            {Array.from({ length: numPages }, (_, i) => (
+              <option key={i + 1} value={i + 1}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
           <button
             onClick={goToNextPage}
             disabled={pageNumber >= numPages}
-            className="px-4 py-2 bg-gray-800 rounded disabled:opacity-50"
+            className="px-4 py-2 bg-gray-800 text-white rounded disabled:opacity-50"
           >
             Suivante
           </button>

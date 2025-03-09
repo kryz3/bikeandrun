@@ -36,11 +36,14 @@ export default function CountdownTimer({ targetDate }) {
   }
 
   return (
-    <div className="relative flex justify-center items-center w-full h-full">
+    <div className="relative flex justify-center items-center w-full h-full flex-col">
     
-
+    <a href="/guide"><h2 className="text-xl sm:text-2xl mb-4 text-center bnr-font text-white">
+          VOIR LE GUIDE DU PARTICIPANT
+        </h2></a>
       {/* Countdown Timer */}
       <div className="relative flex flex-col z-20 items-center justify-center bg-[#171717] text-white py-6 px-4 rounded-lg shadow-lg w-full mx-auto bg-opacity-80">
+      
         <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4">
           TEMPS RESTANT AVANT LE BIKE&RUN
         </h2>
