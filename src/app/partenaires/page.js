@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Partenaires() {
     const OPTIONS = {}
-const SLIDE_COUNT = 3
+const SLIDE_COUNT = 2
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
     return (
         <div className="h-[95vh] place-items-center items-center flex justify-center">
